@@ -1,40 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Random App</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="RandomApp">
-    <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-            margin-top: 100px;
-        }
-        #number {
-            font-size: 50px;
-            margin: 20px;
-        }
-        button {
-            padding: 20px 30px;
-            font-size: 20px;
-            border-radius: 10px;
-            border: none;
-            background: black;
-            color: white;
-        }
-    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>App sécurisée</title>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="SecureApp">
+
+<style>
+body {
+    font-family: Arial;
+    text-align: center;
+    background: #f2f2f2;
+    margin-top: 100px;
+}
+
+input {
+    font-size: 25px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    letter-spacing: 8px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background: black;
+    color: white;
+}
+
+#error {
+    color: red;
+    margin-top: 15px;
+}
+
+/* App cachée au départ */
+#app {
+    display: none;
+}
+</style>
 </head>
+
 <body>
-<h1>Random App 🎲</h1>
-<div id="number">-</div>
-<button onclick="generateRandom()">Générer</button>
+
+<!-- ÉCRAN CODE -->
+<div id="lock">
+    <h2>🔒 Entrez le code</h2>
+    <input type="password" id="code" maxlength="6" inputmode="numeric">
+    <br>
+    <button onclick="checkCode()">Valider</button>
+    <div id="error"></div>
+</div>
+
+<!-- CONTENU DE L'APPLI -->
+<div id="app">
+    <h1>🎉 Bienvenue</h1>
+    <p>Tu es dans l’application</p>
+</div>
+
 <script>
-function generateRandom() {
-    const randomNum = Math.floor(Math.random() * 100) + 1;
-    document.getElementById("number").innerText = randomNum;
+const correctCode = "123456";
+
+function checkCode() {
+    const userCode = document.getElementById("code").value;
+
+    if (userCode === correctCode) {
+        document.getElementById("lock").style.display = "none";
+        document.getElementById("app").style.display = "block";
+    } else {
+        document.getElementById("error").innerText = "Code incorrect ❌";
+    }
 }
 </script>
+
 </body>
 </html>
