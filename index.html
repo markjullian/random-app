@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Random App</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="RandomApp">
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 100px;
+        }
+        #number {
+            font-size: 50px;
+            margin: 20px;
+        }
+        button {
+            padding: 20px 30px;
+            font-size: 20px;
+            border-radius: 10px;
+            border: none;
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h1>Random App 🎲</h1>
+<div id="number">-</div>
+<button onclick="generateRandom()">Générer</button>
+<script>
+function generateRandom() {
+    const randomNum = Math.floor(Math.random() * 100) + 1;
+    document.getElementById("number").innerText = randomNum;
+}
+</script>
+</body>
+</html>
